@@ -1,0 +1,23 @@
+{
+  "name": "mean",
+  "description": "mean demo app for self",
+  "main": "index.js",
+  "authors": [
+    "<madhudskumar@live.in>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "mean"
+  ],
+  "homepage": "https://github.com/madhudskumar/mean",
+  "moduleType": [],
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "toastr": "~2.1.2",
+    "angular": "~1.4.8",
+    "angular-resource": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "bootstrap": "~3.3.6"
+  }
+}

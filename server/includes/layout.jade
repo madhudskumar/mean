@@ -1,0 +1,17 @@
+doctype html
+
+html(lang="en")
+    head
+        title Layout
+
+        link(href="/favicon/favicon.ico" rel="shortcut ico" type="image/x-icon")
+        link(href="/css/bootstrap.min.css" rel="stylesheet" type="text/css")
+        link(href="/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css")
+        link(href="/vendor/toaster/toaster.min.css" rel="stylesheet" type="text/css")
+        link(href="/css/site.css" rel="stylesheet" type="text/css")
+        base(href="http://localhost:7777/")
+
+    body(ng-app='mainApp')
+        block main-content
+
+        include scripts
