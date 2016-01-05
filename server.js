@@ -38,14 +38,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 //DONE//
 
-//TODO:connect to mongoDB
-mongoose.connect('mongodb://localhost/meanDemo');
+//TODO:connect to mongoDB as of ~development in env or ~env.PORT
+if(env == 'development'){
+    mongoose.connect('mongodb://localhost/mean_demo');//local datbase
+}else {
+    mongoose.connect('mongodb://mkds:killer7!@ds039185.mongolab.com:39185/mean_demo');//mongolab
+}
 var db = mongoose.connection;
 db.on('error', function () {
     console.error.bind(console, 'connection failure...');
 });
 db.once('open', function callback() {
-    console.log('\nmeanDemo connection open\n')
+    console.log('\nmean_demo connection open on ' + env.toString() + '\n')
 });
 //DONE
 
@@ -70,12 +74,12 @@ app.get('/partials/:path', function (req, res) {
 app.get('*', function (req, res) {
     res.render('index',{
         mongoMessage : mongoMessage
-    }).status(200);
+    });
 });
 //DONE//
 
 //TODO:to create a port for to listen
-var port = 7777;
+var port = process.env.PORT || 7777;
 app.listen(port);
 console.log("listning on port : " + port.toString() + "....");
 //DONE//

@@ -2,7 +2,7 @@
   "name": "mean",
   "version": "1.0.0",
   "description": "mean demo app for self",
-  "main": "index.js",
+  "main": "server.js",
   "keywords": [
     "mean"
   ],
@@ -19,5 +19,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
+  },
+  "engines":{
+    "node":"5.3.x",
+    "npm":"3.3.x"
   }
 }
