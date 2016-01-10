@@ -1,7 +1,20 @@
 extends ../includes/layout
 
 block main-content
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container-fluid
+            .navbar-header
+                a.navbar-brand(href="/") mean_demo
+                h6 -mean_demo_subtext
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav.pull-right
+                    li
+                        a(href="/") HOME
+                div(ng-include="'/partials/accounts/nav-login'")
     section.content
         div(ng-view).container.container-fluid
 
-    h2= mongoMessage
+
+    hr.container.container-fluid
+    footer.text-center.container.container-fluid
+        h6 &copy; 2015 ./mkds/.

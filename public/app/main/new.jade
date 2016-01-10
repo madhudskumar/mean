@@ -1,0 +1,8 @@
+.panel.panel-primary
+    .panel-heading.text-center NEW CORSES
+    .panel-body.text-center
+        .row(ng-repeat="course in courses | orderBy:'published':true | filter:{featured:false}")
+            .col-md-12
+                p.col-sm-3 {{course.name}}
+                p.col-sm-9 {{course.published | date:'MMM d'}}
+                hr

@@ -9,13 +9,8 @@ app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when('/',
             {
-                templateUrl:'/partials/main.jade',
+                templateUrl:'/partials/main/Main',
                 controller:'MainCtrl'
             }
         );
-});
-
-app.controller('MainCtrl',
-    function MainCtrl ($scope) {
-        $scope.hello = "Hi there MR!";
 });
