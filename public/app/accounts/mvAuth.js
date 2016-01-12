@@ -1,5 +1,5 @@
 app.factory('mvAuth',
-    function ($http, mvIdentity, $q) {
+    function ($http, mvIdentity, $q, mvUser) {
         return{
             authUser : function (username, password) {
                 var dfd = $q.defer();
@@ -7,13 +7,34 @@ app.factory('mvAuth',
                 $http.post('/login', {username:username, password:password})
                     .then(function (response) {
                         if(response.data.success){
-                            mvIdentity.currentUser = response.data.user;
+                            var user = new mvUser();
+                            angular.extend(user, response.data.user);
+                            mvIdentity.currentUser = user;
                             dfd.resolve(true);
                         }else{
                             dfd.resolve(false);
                         }
                     }
                 );
+
+                return dfd.promise;
+            },
+
+            auth: function (role) {
+                if(mvIdentity.isAuthorised(role)){
+                    return true;
+                }else {
+                    return $q.reject('not authorised');
+                }
+            },
+
+            logOut: function () {
+                var dfd = $q.defer();
+                $http.post('/logout', {logout:true})
+                    .then(function () {
+                        mvIdentity.currentUser = undefined;
+                        dfd.resolve();
+                    });
 
                 return dfd.promise;
             }
