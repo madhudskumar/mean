@@ -9,6 +9,11 @@ app.config(function ($routeProvider, $locationProvider) {
             auth: function (mvAuth) {
                 return mvAuth.auth('admin');
             }
+        },
+        user:{
+            auth: function (mvAuth) {
+                return mvAuth.authUserForRoute('user');
+            }
         }
     };
 
@@ -27,7 +32,26 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller:'mvUserListCtrl',
                 resolve:routeRoleCheck.admin
             }
-        );
+        )
+        .when('/signup',
+            {
+                templateUrl:'/partials/accounts/signup',
+                controller:'mvSignUpCtrl'
+            }
+        )
+        .when('/profile',
+            {
+                templateUrl:'/partials/accounts/profile',
+                controller:'mvProfileCtrl',
+                resolve:routeRoleCheck.user
+            }
+        )
+        .when('/courses',
+            {
+                templateUrl:'/partials/courses/course-list',
+                controller:'mvCourseListCtrl'
+            }
+        )
 });
 
 app.run(function ($rootScope, $location) {

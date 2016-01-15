@@ -2,6 +2,6 @@
     .panel-heading.text-center FEATURED
     .panel-body.text-center
         .row(ng-repeat="course in courses | filter:{featured:true} | limitTo:10")
-            p.col-sm-3 {{course.name}}
+            p.col-sm-3 {{course.title}}
             p.col-sm-9 {{course.published}}
             hr
